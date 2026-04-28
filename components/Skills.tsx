@@ -127,7 +127,6 @@ export default function Skills() {
             </button>
           </div>
           
-          {/* @ts-ignore */}
           <FallingText
             text="React Next.js TypeScript Node.js Python PostgreSQL MongoDB Redis Docker AWS Figma Git GraphQL Tailwind CSS Laravel"
             highlightWords={['React', 'Python', 'Laravel']}

@@ -3,17 +3,27 @@
 import { useRef, useState, useEffect } from 'react';
 import Matter from 'matter-js';
 
-const FallingText = ({
-  text = '',
-  highlightWords = [],
+interface FallingTextProps {
+  text?: string;
+  highlightWords: string[];
+  trigger?: string;
+  gravity?: number;
+  mouseConstraintStiffness?: number;
+  fontSize?: string;
+  startAnimation?: boolean;
+}
+
+const FallingText: React.FC<FallingTextProps> = ({
+  text = 'string',
+  highlightWords,
   trigger = 'auto',
   gravity = 1,
   mouseConstraintStiffness = 0.2,
   fontSize = '1rem',
   startAnimation = false
 }) => {
-  const containerRef = useRef(null);
-  const textRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
   const [effectStarted, setEffectStarted] = useState(false);
 
   useEffect(() => {
@@ -75,7 +85,7 @@ const FallingText = ({
     ]);
 
     const wordSpans = textRef.current.querySelectorAll('span');
-    const wordBodies = [];
+    const wordBodies: { body: Matter.Body; span: HTMLSpanElement }[] = [];
 
     wordSpans.forEach(span => {
       const rect = span.getBoundingClientRect();
@@ -97,8 +107,8 @@ const FallingText = ({
       Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.18);
 
       span.style.position = 'absolute';
-      span.setAttribute('data-w', rect.width);
-      span.setAttribute('data-h', rect.height);
+      span.setAttribute('data-w', rect.width.toString());
+      span.setAttribute('data-h', rect.height.toString());
       span.style.transformOrigin = '50% 50%';
 
       World.add(engine.world, body);
@@ -115,11 +125,11 @@ const FallingText = ({
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    let rid;
+    let rid: number;
     const update = () => {
       wordBodies.forEach(({ body, span }) => {
-        const w = parseFloat(span.getAttribute('data-w'));
-        const h = parseFloat(span.getAttribute('data-h'));
+        const w = parseFloat(span.getAttribute('data-w') || '0');
+        const h = parseFloat(span.getAttribute('data-h') || '0');
         
         span.style.left = (body.position.x - w / 2) + 'px';
         span.style.top = (body.position.y - h / 2) + 'px';
