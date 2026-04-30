@@ -25,11 +25,13 @@ SKILL PROGRAMMING:
 - JavaScript (utama)
 - React.js (frontend framework)
 - Node.js + Express (backend)
+- Next.js (fullstack)
 - PHP + Laravel
 - MySQL
 - Belajar React Native (mobile app)
 - Pernah buat proyek ML (dibantu AI)
 - Target masa depan: mahir Data Science, AI/ML
+
 
 KONTAK & SOSIAL:
 - Email: dlyhasugian@gmail.com
