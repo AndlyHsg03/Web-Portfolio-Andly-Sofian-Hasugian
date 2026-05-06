@@ -91,7 +91,21 @@ const listProjects = [
     live: '/projects/project7.png',
     featured: false,
     
+  },
+  {
+    id: 8,
+    title: 'Penerapan K-Means Clustering Untuk Identifikasi Pola Iklim Stariun Cuaca di Indonesia Menggunakan Data NOAA GSOD',
+    category: 'Lainnya',  
+    tags: ['Data Mining', 'K-Means Clustering', 'NOAA GSOD', 'Python', 'Pandas', 'Matplotlib', 'Scikit-Cluster'],
+    description: 'Project Data Science yang menerapkan algoritma K-Means Clustering untuk mengidentifikasi pola iklim stasiun cuaca di Indonesia menggunakan data NOAA GSOD, memberikan wawasan tentang variasi iklim di berbagai wilayah.',
+    image: { src: '/projects/project8.png', alt: 'Clustering' },
+    color: 'from-green-500/20 to-green-700/40',
+    github: 'https://github.com/AndlyHsg03/Penerapan_K-Means_Clustering_NOAA_GSODD_Indonesia',
+    live: '/projects/project8.png',
+    featured: true,
+    
   }
+
 ]
 
 const categories = ['Semua', 'Web-App', 'Mobile', 'AI/ML', 'Lainnya']
