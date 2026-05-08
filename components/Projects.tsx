@@ -52,7 +52,7 @@ const listProjects = [
     image: { src: '/projects/project4.png', alt: 'StudyFLow' },
     color: 'from-navy-700/30 to-navy-900/60',
     github: 'https://github.com/AndlyHsg03/studyflow',
-    live: '/projects/project4.png',
+    live: 'http://studyflow-app.my.id/',
     featured: true,
   },
   {
