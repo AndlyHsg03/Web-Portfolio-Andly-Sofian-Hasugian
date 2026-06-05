@@ -4,6 +4,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Portfolio | Andly Hasugian',
   description: 'Professional Portfolio - Developer & Designer',
+  verification: {
+    google: 'RDMY9aFzT7K-AhL37nXVd64tj3MijqveWmGR0gT-iek',
+  },
   icons: {
     icon: '/logoADLY.png',
   },
