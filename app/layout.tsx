@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Andly Hasugian',
+  title: 'Portfolio | Andly Sofian Hasugian',
   description: 'Professional Portfolio - Developer & Designer',
   verification: {
     google: 'RDMY9aFzT7K-AhL37nXVd64tj3MijqveWmGROgT-iek',
