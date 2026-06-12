@@ -11,6 +11,12 @@ const stats = [
 const timeline = [
   {
     year: '2026',
+    title: 'Apply Magang di Ruang Mahasiswa',
+    place: 'Ruang Mahasiswa, Medan',
+    desc: 'Meraih kesempatan magang di Ruang Mahasiswa, sebuah startup teknologi yang fokus pada pengembangan aplikasi untuk mahasiswa. Di sini, saya terlibat di bagian content creator, membantu membuat konten edukatif dan menarik untuk platform mereka, serta belajar banyak tentang industri teknologi dan startup.',
+  },
+  {
+    year: '2026',
     title: 'Semester 4 Ilmu Komputer',
     place: 'Universitas Negeri Medan',
     desc: 'Aktif dalam berbagai proyek pengembangan aplikasi, dan sedang berkembang dalam bidang Data Science dan AI.',
