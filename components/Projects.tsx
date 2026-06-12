@@ -82,41 +82,39 @@ const listProjects = [
   {
     id: 7,
     title: 'Muncak Digunung Sibayak',
-    category: 'Lainnya',  
-    tags: ['Travel', 'Nature', 'Photography', 'Adventure',  'Mountaineering'],
+    category: 'Lainnya',
+    tags: ['Travel', 'Nature', 'Photography', 'Adventure', 'Mountaineering'],
     description: 'Pengalaman mendaki Gunung Sibayak yang menakjubkan, dengan pemandangan alam yang indah dan tantangan fisik yang memacu adrenalin.',
     image: { src: '/projects/project7.png', alt: 'Muncak Digunung Sibayak' },
     color: 'from-green-500/20 to-green-700/40',
     github: '#',
     live: '/projects/project7.png',
     featured: false,
-    
   },
   {
     id: 8,
     title: 'Penerapan K-Means Clustering Untuk Identifikasi Pola Iklim Stariun Cuaca di Indonesia Menggunakan Data NOAA GSOD',
-    category: 'Lainnya',  
+    category: 'Lainnya',
     tags: ['Data Mining', 'K-Means Clustering', 'NOAA GSOD', 'Python', 'Pandas', 'Matplotlib', 'Scikit-Cluster'],
     description: 'Project Data Science yang menerapkan algoritma K-Means Clustering untuk mengidentifikasi pola iklim stasiun cuaca di Indonesia menggunakan data NOAA GSOD, memberikan wawasan tentang variasi iklim di berbagai wilayah.',
     image: { src: '/projects/project8.png', alt: 'Clustering' },
     color: 'from-green-500/20 to-green-700/40',
     github: 'https://github.com/AndlyHsg03/Penerapan_K-Means_Clustering_NOAA_GSODD_Indonesia',
     live: '/projects/project8.png',
-    featured: true, 
+    featured: true,
   },
   {
-    id: 8,
+    id: 9,
     title: 'Implementasi Deterministic Finite Automata (DFA) pada Sistem Otomatisasi Layanan Pelanggan UMKM Laundry Terintegrasi WhatsApp dan Web Admin',
-    category: 'Lainnya',  
+    category: 'Lainnya',
     tags: ['web admin', 'DFA', 'Automata Theory', 'Python', 'Flask', 'WhatsApp API', 'Mysql'],
     description: 'Project yang mengimplementasikan Deterministic Finite Automata (DFA) untuk otomatisasi layanan pelanggan UMKM laundry, dengan integrasi WhatsApp untuk komunikasi pelanggan dan web admin untuk manajemen layanan.',
     image: { src: '/projects/project9.png', alt: 'dfa' },
     color: 'from-green-500/20 to-green-700/40',
     github: 'https://github.com/AndlyHsg03/laundry-bot',
     live: '/projects/project9.png',
-    featured: false, 
+    featured: false,
   }
-
 ]
 
 const categories = ['Semua', 'Web-App', 'Mobile', 'AI/ML', 'Lainnya']
@@ -125,21 +123,23 @@ export default function Projects() {
   const [filter, setFilter] = useState('Semua')
   const [filtered, setFiltered] = useState(listProjects)
 
-
-  useEffect(() => {    if (filter === 'Semua') {
+  useEffect(() => {
+    if (filter === 'Semua') {
       setFiltered(listProjects)
     } else {
       setFiltered(listProjects.filter(p => p.category === filter))
     }
   }, [filter])
-  
 
   useEffect(() => {
+    const scrollContainer = document.querySelector('#projects-scroll-container')
+    if (!scrollContainer) return
+
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-      { threshold: 0.1 }
+      { threshold: 0.1, root: scrollContainer }
     )
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el))
+    scrollContainer.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el))
     return () => observer.disconnect()
   }, [filtered])
 
@@ -177,113 +177,140 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Projects grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project, i) => (
-            <div
-              key={project.id}
-              className={`project-card reveal glass rounded-2xl overflow-hidden card-hover cursor-pointer group ${
-                project.featured ? 'md:col-span-2 lg:col-span-1' : ''
-              }`}
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              {/* Image area */}
-              <div className={`relative h-48 bg-gradient-to-br ${project.color} overflow-hidden` } >
-                {/* Mock screen UI */}
-                <div className="absolute inset-4 rounded-lg glass border border-white/10 overflow-hidden">
-                  <div className="h-6 flex items-center gap-1.5 px-3 border-b border-white/10">
-                    <div className="w-2 h-2 rounded-full bg-red-400/60" />
-                    <div className="w-2 h-2 rounded-full bg-yellow-400/60" />
-                    <div className="w-2 h-2 rounded-full bg-green-400/60" />
-                  </div>
-                  
-                  {/* Project Image */}
-                  {project.image ? (
-                    <div className="relative w-full h-[calc(100%-24px)] bg-black/20">
-                      <Image
-                        src={project.image.src}
-                        alt={project.image.alt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
+        {/* Scrollable projects container */}
+        <div
+          id="projects-scroll-container"
+          className="overflow-y-auto pr-2"
+          style={{
+            maxHeight: '780px',
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'rgba(249,115,22,0.4) rgba(255,255,255,0.05)',
+          }}
+        >
+          {/* Custom scrollbar for webkit */}
+          <style>{`
+            #projects-scroll-container::-webkit-scrollbar {
+              width: 6px;
+            }
+            #projects-scroll-container::-webkit-scrollbar-track {
+              background: rgba(255,255,255,0.05);
+              border-radius: 99px;
+            }
+            #projects-scroll-container::-webkit-scrollbar-thumb {
+              background: rgba(249,115,22,0.4);
+              border-radius: 99px;
+            }
+            #projects-scroll-container::-webkit-scrollbar-thumb:hover {
+              background: rgba(249,115,22,0.7);
+            }
+          `}</style>
+
+          {/* Projects grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-2">
+            {filtered.map((project, i) => (
+              <div
+                key={project.id}
+                className={`project-card reveal glass rounded-2xl overflow-hidden card-hover cursor-pointer group ${
+                  project.featured ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                {/* Image area */}
+                <div className={`relative h-48 bg-gradient-to-br ${project.color} overflow-hidden`}>
+                  {/* Mock screen UI */}
+                  <div className="absolute inset-4 rounded-lg glass border border-white/10 overflow-hidden">
+                    <div className="h-6 flex items-center gap-1.5 px-3 border-b border-white/10">
+                      <div className="w-2 h-2 rounded-full bg-red-400/60" />
+                      <div className="w-2 h-2 rounded-full bg-yellow-400/60" />
+                      <div className="w-2 h-2 rounded-full bg-green-400/60" />
                     </div>
-                  ) : (
-                    <div className="w-full h-[calc(100%-24px)] flex items-center justify-center text-white/30">
-                      <span className="text-sm">No image available</span>
+
+                    {/* Project Image */}
+                    {project.image ? (
+                      <div className="relative w-full h-[calc(100%-24px)] bg-black/20">
+                        <Image
+                          src={project.image.src}
+                          alt={project.image.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-full h-[calc(100%-24px)] flex items-center justify-center text-white/30">
+                        <span className="text-sm">No image available</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Featured badge */}
+                  {project.featured && (
+                    <div className="absolute top-3 right-3 px-2 py-0.5 bg-orange-500 rounded text-xs font-mono text-white">
+                      Featured
                     </div>
                   )}
-                </div>
 
-                {/* Featured badge */}
-                {project.featured && (
-                  <div className="absolute top-3 right-3 px-2 py-0.5 bg-orange-500 rounded text-xs font-mono text-white">
-                    Featured
-                  </div>
-                )}
-
-                {/* Hover overlay */}
-                <div className="project-overlay absolute inset-0 bg-navy-950/80 backdrop-blur-sm flex items-center justify-center gap-4">
-                  <a
-                    href={typeof project.github === 'string' ? project.github : project.github.url}
-                    className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
-                    onClick={e => e.stopPropagation()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-
-                    
-                  >
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                  </a>
-                  {project.live && project.live !== '#' ? (
-                    <a 
-                      href={project.live} 
-                      className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors" 
+                  {/* Hover overlay */}
+                  <div className="project-overlay absolute inset-0 bg-navy-950/80 backdrop-blur-sm flex items-center justify-center gap-4">
+                    <a
+                      href={typeof project.github === 'string' ? project.github : project.github.url}
+                      className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
                       onClick={e => e.stopPropagation()}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                       </svg>
                     </a>
-                  ) : (
-                    <button 
-                      className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center cursor-not-allowed opacity-50" 
-                      disabled
-                      title="Live demo tidak tersedia"
-                    >
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <span className="font-mono text-xs text-orange-400/70">{project.category}</span>
-                    <h3 className="font-semibold text-white text-lg group-hover:text-orange-400 transition-colors">
-                      {project.title}
-                    </h3>
+                    {project.live && project.live !== '#' ? (
+                      <a
+                        href={project.live}
+                        className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors"
+                        onClick={e => e.stopPropagation()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <button
+                        className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center cursor-not-allowed opacity-50"
+                        disabled
+                        title="Live demo tidak tersedia"
+                      >
+                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </button>
+                    )}
                   </div>
                 </div>
-                <p className="text-white/50 text-sm leading-relaxed mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="px-2 py-0.5 bg-navy-800 rounded text-xs font-mono text-white/50 border border-navy-700">
-                      {tag}
-                    </span>
-                  ))}
+
+                {/* Content */}
+                <div className="p-5">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <span className="font-mono text-xs text-orange-400/70">{project.category}</span>
+                      <h3 className="font-semibold text-white text-lg group-hover:text-orange-400 transition-colors">
+                        {project.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="text-white/50 text-sm leading-relaxed mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="px-2 py-0.5 bg-navy-800 rounded text-xs font-mono text-white/50 border border-navy-700">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Add more CTA */}
