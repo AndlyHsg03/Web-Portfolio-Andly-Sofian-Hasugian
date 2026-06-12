@@ -102,8 +102,19 @@ const listProjects = [
     color: 'from-green-500/20 to-green-700/40',
     github: 'https://github.com/AndlyHsg03/Penerapan_K-Means_Clustering_NOAA_GSODD_Indonesia',
     live: '/projects/project8.png',
-    featured: true,
-    
+    featured: true, 
+  },
+  {
+    id: 8,
+    title: 'Implementasi Deterministic Finite Automata (DFA) pada Sistem Otomatisasi Layanan Pelanggan UMKM Laundry Terintegrasi WhatsApp dan Web Admin',
+    category: 'Lainnya',  
+    tags: ['web admin', 'DFA', 'Automata Theory', 'Python', 'Flask', 'WhatsApp API', 'Mysql'],
+    description: 'Project yang mengimplementasikan Deterministic Finite Automata (DFA) untuk otomatisasi layanan pelanggan UMKM laundry, dengan integrasi WhatsApp untuk komunikasi pelanggan dan web admin untuk manajemen layanan.',
+    image: { src: '/projects/project9.png', alt: 'dfa' },
+    color: 'from-green-500/20 to-green-700/40',
+    github: 'https://github.com/AndlyHsg03/laundry-bot',
+    live: '/projects/project9.png',
+    featured: false, 
   }
 
 ]
