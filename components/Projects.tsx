@@ -114,6 +114,18 @@ const listProjects = [
     github: 'https://github.com/AndlyHsg03/laundry-bot',
     live: '/projects/project9.png',
     featured: false,
+  },
+  {
+    id: 10,
+    title: 'Fine-Tuning Model Qwen 3.5 9B untuk Mengubah Gaya Bahasa Menjadi Gaya Bahasa Medan',
+    category: 'AI/ML',
+    tags: ['Fine-Tune', 'Qwen 3.5 9B', 'Kaggle', 'ipynb', 'google colab', 'AI Engineer', 'LLM', 'Hugging Face'],
+    description: 'Fine-tuning model Qwen 3.5 9B untuk mengubah gaya bahasa menjadi gaya bahasa Medan, dengan menggunakan dataset khusus dan teknik fine-tuning untuk menghasilkan model yang mampu menghasilkan teks dengan gaya bahasa khas Medan.',
+    image: { src: '/projects/project10.png', alt: 'Fine-Tuning Qwen' },
+    color: 'from-green-500/20 to-green-700/40',
+    github: 'https://huggingface.co/Andly03/qwen3.5-9b-KindlyLM-ML/tree/main',
+    live: '/projects/project10.png',
+    featured: true,
   }
 ]
 
