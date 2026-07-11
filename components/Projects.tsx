@@ -94,7 +94,7 @@ const listProjects = [
   {
     id: 8,
     title: 'Penerapan K-Means Clustering Untuk Identifikasi Pola Iklim Stariun Cuaca di Indonesia Menggunakan Data NOAA GSOD',
-    category: 'Lainnya',
+    category: 'AI/ML',
     tags: ['Data Mining', 'K-Means Clustering', 'NOAA GSOD', 'Python', 'Pandas', 'Matplotlib', 'Scikit-Cluster'],
     description: 'Project Data Science yang menerapkan algoritma K-Means Clustering untuk mengidentifikasi pola iklim stasiun cuaca di Indonesia menggunakan data NOAA GSOD, memberikan wawasan tentang variasi iklim di berbagai wilayah.',
     image: { src: '/projects/project8.png', alt: 'Clustering' },
@@ -106,7 +106,7 @@ const listProjects = [
   {
     id: 9,
     title: 'Implementasi Deterministic Finite Automata (DFA) pada Sistem Otomatisasi Layanan Pelanggan UMKM Laundry Terintegrasi WhatsApp dan Web Admin',
-    category: 'Lainnya',
+    category: 'Web-App ',
     tags: ['web admin', 'DFA', 'Automata Theory', 'Python', 'Flask', 'WhatsApp API', 'Mysql'],
     description: 'Project yang mengimplementasikan Deterministic Finite Automata (DFA) untuk otomatisasi layanan pelanggan UMKM laundry, dengan integrasi WhatsApp untuk komunikasi pelanggan dan web admin untuk manajemen layanan.',
     image: { src: '/projects/project9.png', alt: 'dfa' },
@@ -126,10 +126,34 @@ const listProjects = [
     github: 'https://huggingface.co/Andly03/qwen3.5-9b-KindlyLM-ML/tree/main',
     live: '/projects/project10.png',
     featured: true,
+  },
+  {
+    id: 11,
+    title: 'Smart Lamp Control System via Embedded Web Server on ESP32',
+    category: 'IoT',
+    tags: ['ESP32', 'IoT', 'Embedded Web Server', 'Smart Home', 'Arduino IDE'],
+    description: 'Sistem kontrol lampu pintar menggunakan ESP32 dengan server web tertanam, memungkinkan pengguna untuk mengontrol lampu melalui antarmuka web yang responsif dan mudah digunakan.',
+    image: { src: '/projects/project11.png', alt: 'Smart Lamp Control' },
+    color: 'from-green-500/20 to-green-700/40',
+    github: 'https://github.com/AndlyHsg03/SmartLamp',
+    live: '/projects/project11.png',
+    featured: true,
+  },
+  {
+    id: 12,
+    title: 'Monitoring Suhu dan Kelembaban dengan ESP32 dan Sensor DHT11',
+    category: 'IoT',
+    tags: ['ESP32', 'DHT11', 'OLED SSD1306', 'Arduino IDE'],
+    description: 'Sistem monitoring suhu dan kelembaban menggunakan ESP32 dan sensor DHT11, menampilkan data secara real-time pada layar OLED SSD1306, cocok untuk aplikasi rumah pintar dan lingkungan yang memerlukan pemantauan kondisi udara.',
+    image: { src: '/projects/project12.png', alt: 'Temperature and Humidity Monitoring' },
+    color: 'from-green-500/20 to-green-700/40',
+    github: 'https://github.com/AndlyHsg03/esp32-monitor-suhu',
+    live: '/projects/project12.png',
+    featured: true,
   }
 ]
 
-const categories = ['Semua', 'Web-App', 'Mobile', 'AI/ML', 'Lainnya']
+const categories = ['Semua', 'Web-App', 'Mobile', 'AI/ML', 'IoT', 'Lainnya']
 
 export default function Projects() {
   const [filter, setFilter] = useState('Semua')
