@@ -150,6 +150,18 @@ const listProjects = [
     github: 'https://github.com/AndlyHsg03/esp32-monitor-suhu',
     live: '/projects/project12.png',
     featured: true,
+  },
+  {
+    id: 13,
+    title: 'Automasi Laptop Berbasis Asisten AI via Telegram + IoT',
+    category: 'IoT',
+    tags: ['Telegram', 'ESP32', 'OLED SSD1306', 'Arduino IDE'],
+    description: 'Sistem automasi laptop berbasis asisten AI via Telegram dan IoT, memungkinkan pengguna untuk mengontrol laptop secara cerdas melalui pesan teks dan suara langsung yang di eksekusi oleh perangkat IoT.',
+    image: { src: '/projects/project13.png', alt: 'AI Laptop Assistant' },
+    color: 'from-green-500/20 to-green-700/40',
+    github: 'https://github.com/AndlyHsg03/ai-laptop-assistant-iot',
+    live: '/projects/project13.png',
+    featured: true,
   }
 ]
 
