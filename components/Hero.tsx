@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-const roles = ['Full Stack Developer', 'UI/UX Designer', 'Mobile Developer', 'Data Scientist']
+const roles = ['Full Stack Developer', 'Mobile Developer', 'Data Scientist', 'AI Engineer']
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0)
@@ -150,7 +150,7 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-white/60 text-lg leading-relaxed max-w-lg">
-              Saya adalah mahasiswa Ilmu Komputer yang memiliki minat besar dalam pengembangan aplikasi web, mobile dan sedang mendalami bidang AI serta data science.
+              Saya adalah mahasiswa Ilmu Komputer yang memiliki minat besar dalam pengembangan AI serta Data Science.
               Saya selalu bersemangat untuk belajar teknologi baru dan menerapkannya dalam proyek-proyek yang menantang.
 
 
